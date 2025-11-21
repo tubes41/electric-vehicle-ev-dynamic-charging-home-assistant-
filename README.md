@@ -49,10 +49,10 @@ It also supports **different power limits for day and night** to optimize chargi
 This blueprint can be installed in two ways:
 
 ### **🔗 Direct Import via Home Assistant**
-<a href="https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/EDV11/electric-vehicle-ev-dynamic-charging-home-assistant-/main/Dynamic-EV-Charging-Automation.yaml" target="_blank" rel="noreferrer noopener"><img src="https://my.home-assistant.io/badges/blueprint_import.svg" alt="Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled." /></a>
+<a href="https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https://raw.githubusercontent.com/tubes41/electric-vehicle-ev-dynamic-charging-home-assistant-/refs/heads/main/Dynamic-EV-Charging-Automation.yaml" target="_blank" rel="noreferrer noopener"><img src="https://my.home-assistant.io/badges/blueprint_import.svg" alt="Open your Home Assistant instance and show the blueprint import dialog with a specific blueprint pre-filled." /></a>
 
 ### **📂 Manual Installation**
-1. Open the blueprint file in this repository (https://raw.githubusercontent.com/EDV11/electric-vehicle-ev-dynamic-charging-home-assistant-/main/Dynamic-EV-Charging-Automation.yaml).
+1. Open the blueprint file in this repository (https://raw.githubusercontent.com/tubes41/electric-vehicle-ev-dynamic-charging-home-assistant-/refs/heads/main/Dynamic-EV-Charging-Automation.yaml).
 2. Copy the URL from your browser's address bar.
 3. In Home Assistant, go to **Settings → Automations & Scenes → Blueprints**.
 4. Click **"Import Blueprint"** in the bottom right corner.
