@@ -238,7 +238,8 @@ action:
 # First: Control charging state (Start/Stop)
   - if:
       - condition: template
-        value_template: {{ true }} # "{{ actual_free_power / voltage >= min_amps }}"
+        value_template: {{ true }} 
+# "{{ actual_free_power / voltage >= min_amps }}"
     then:
       - service: switch.turn_on
         target:
