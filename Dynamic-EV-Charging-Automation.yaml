@@ -59,16 +59,14 @@ blueprint:
         entity:
           domain: sensor          
     charger_toggle:
-      name: EV Charging Toggle (Start/Stop)
+      name: EV Charging Toggle (on/off)
       description: >
-        Select entity that controls the charging state of the EV charger.
-        
-        This entity should support options like "Start charging", "Stop charging", or similar commands.
+        Switch entity that controls the charging state of the EV charger.
         
         When the calculated amperage falls below the minimum threshold, the automation will use this entity to stop charging instead of setting amperage to 0.
         
         When power becomes available again, it will restart charging and set the appropriate amperage.
-      default: select.ev_charger_toggle_charging
+      default: switch.ev_charger_toggle_charging
       selector:
         entity:
           domain: switch               
