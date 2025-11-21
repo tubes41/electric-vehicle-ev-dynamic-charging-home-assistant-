@@ -71,7 +71,7 @@ blueprint:
       default: select.ev_charger_toggle_charging
       selector:
         entity:
-          domain: select               
+          domain: switch               
     sensor_house_power:
       name: Total Power Consumption Sensor
       description: Sensor that measures the total power consumption of the household in real-time.  This value is used to determine the available power for charging the electric vehicle (EV), ensuring that the charging current is dynamically adjusted to prevent exceeding the contracted power limit.  
@@ -194,6 +194,7 @@ condition:
           - 'charging'
           - 'charged'
           - 'plugged_in'
+          - 'Stopped'
         
 action:
   - variables:
@@ -208,7 +209,7 @@ action:
       total_consumption: "{{ states(sensor_house_power_entity) | float(0) }}"
       charger_consumption: |-
         {% set state = states(sensor_charging_entity) %}
-        {% if state in ['charging', 'plugged_in', 'waiting_for_authorization', 'waiting'] %}
+        {% if state in ['charging', 'Charging', 'plugged_in', 'waiting_for_authorization', 'waiting'] %}
           {{ charging_current_value * voltage }}
         {% else %}
           0
@@ -237,19 +238,18 @@ action:
           {{ raw_amps | int }}
         {% endif %}
 # First: Control charging state (Start/Stop)
-  - service: select.select_option
-    target:
-      entity_id: !input charger_toggle
-    data:
-      option: |-
-        {% if actual_free_power / voltage >= min_amps %}
-          Start charging
-        {% else %}
-          Stop charging
-        {% endif %}    
+  - if:
+      - condition: template
+        value_template: {{actual_free_power / voltage >= min_amps}}
+    then:
+      - service: switch.turn_on
+        target:
+          entity_id: !input charger_toggle
+    else:
+      - service: switch.turn_off
+        target:
+          entity_id: !input charger_toggle
         
-
-
   - repeat:
       while:
 # While the difference between the current charging value and new_target_value is >= 1 A,
