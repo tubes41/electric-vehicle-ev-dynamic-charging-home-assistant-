@@ -189,7 +189,7 @@ condition:
       - condition: state
         entity_id: !input sensor_charging
         state: 
-          - 'charging'
+          - 'Charging'
           - 'charged'
           - 'plugged_in'
           - 'Stopped'
@@ -207,7 +207,7 @@ action:
       total_consumption: "{{ states(sensor_house_power_entity) | float(0) }}"
       charger_consumption: |-
         {% set state = states(sensor_charging_entity) %}
-        {% if state in ['charging', 'Charging', 'plugged_in', 'waiting_for_authorization', 'waiting'] %}
+        {% if state in ['Charging', 'Charging', 'plugged_in', 'waiting_for_authorization', 'waiting'] %}
           {{ charging_current_value * voltage }}
         {% else %}
           0
